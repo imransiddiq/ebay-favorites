@@ -39,23 +39,23 @@
 
     <div class="pushy pushy-left">  
         <div id="sidebar" class="ui inverted left vertical menu responsive_nav">
-            <a class="item" href="#">
-               <img src="images/menu_icon_home.png"> Home
+            <a class="item" href="{{url('/')}}">
+               <img src="{{url('images/menu_icon_home.png')}}"> Home
             </a>
             <a class="item" href="#">
                <img src="images/menu_icon_rate.png"> Rate us
             </a>
             <a class="item" href="#">
-               <img src="images/menu_icon_fb.png"> facebook
+               <img src="{{url('images/menu_icon_fb.png')}}"> facebook
+            </a>
+            <a class="item" href="{{url('contact-us')}}">
+               <img src="{{url('images/menu_icon_contact.png')}}"> contact us
             </a>
             <a class="item" href="#">
-               <img src="images/menu_icon_contact.png"> contact us
+               <img src="{{url('images/menu_icon_settings.png')}}"> setting
             </a>
             <a class="item" href="#">
-               <img src="images/menu_icon_settings.png"> setting
-            </a>
-            <a class="item" href="#">
-               <img src="images/menu_icon_about.png"> about
+               <img src="{{url('images/menu_icon_about.png')}}"> about
             </a>
         </div>
     </div>

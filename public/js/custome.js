@@ -42,3 +42,9 @@ $('.socialShareIcon').click(function() {
 	$(this).closest('.row').find('.socialShareRow').fadeToggle(500);
 	console.log('clicked');
 });
+
+
+// Get No Bid Products
+$('.getNobid').click(function() {
+	$('#noBidForm').submit();
+})

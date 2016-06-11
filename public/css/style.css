@@ -716,6 +716,16 @@ section.products .products_outer ul li .porduct p span{
 	color: #dd1e31;
 }
 
+.socialShareIcon {
+	color: #B00200;
+    margin-left: 30px;
+
+}
+
+.productPrice {
+	color: #4B4646 !important;
+}
+
 .padding_zero{
 	padding-left: 0px !important;
 }

@@ -12,7 +12,11 @@
                             <div class="col-md-4">
                                 <div class="product_img">
                                     <a href="{{$product->viewItemURL}}" target="_blank">
+                                        @if($product->galleryURL)
                                         <img src="{{$product->galleryURL}}">
+                                        @else
+                                        <img src="{{url('images/no-image.png')}}">
+                                        @endif
                                     </a>
                                 </div>
                             </div>
@@ -23,7 +27,7 @@
                                     <div class="col-md-11">
                                     </div>
                                     <div class="col-md-1">
-                                        <p><span>${{$product->priceUSD}}</span></p>
+                                        <p><span class="productPrice">${{$product->priceUSD}}</span></p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -38,14 +42,6 @@
                                     <div class="col-md-1 pull-right">
                                         <a href="javascript:void(0);" class="socialShareIcon"><i class="fa fa-share-alt"></i></a>
                                     </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="col-xs-6">
-                                    </div>
-                                    <div class="col-xs-6">
-                                            
-                                    </div>
-
                                 </div>
                                 <!-- <div class="row">
                                     <div class="col-md-4">

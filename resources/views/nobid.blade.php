@@ -14,7 +14,7 @@
                     </div>
 
                     <div class="no_bits_inner">
-                        <form action="{{url('nobid-products')}}" method="GET">
+                        <form action="{{url('nobid-products')}}" id="noBidForm" method="GET">
                             <!-- <input type="hidden" placeholder="" name="type" value="nobid"></input> -->
                             <input type="text" placeholder="Keyword(Option)" name="search"></input>
                                 <select name="category">
@@ -29,7 +29,7 @@
                                     @endforeach
                                 </select> 
                             <input type="text" placeholder="Max price" name="max_price"></input>
-                            <input type="submit" value="SEARCH" name=""></input>
+                            <input type="button" class="getNobid" value="SEARCH" name=""></input>
                         </form>
                     </div>
                 </div>

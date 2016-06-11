@@ -15,12 +15,13 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('no-bids', 'HomeController@getNoBid');
-Route::get('contact-us', 'HomeController@getContactUs');
 Route::get('products', 'HomeController@getProducts');
 Route::get('nobid-products', 'HomeController@getNoBidProducts');
 Route::get('favorite-products', 'HomeController@getFavorite');
 Route::get('customer-purchases', 'HomeController@getCustomerPurchase');
 Route::get('hot-deals', 'HomeController@getHotDeal');
+Route::get('contact-us', 'HomeController@getContactUs');
+Route::post('contact-us', 'HomeController@postContactUs');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

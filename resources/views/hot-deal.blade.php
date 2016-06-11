@@ -6,26 +6,40 @@
         <div class="products_outer">
             <ul>
                 @foreach($products as $product)
-                <a href="{{$product['viewItemURL']}}" target="_blank">
+                <a href="{{$product['dealurl']}}" target="_blank">
                 <li>
                     <div class="porduct">
                         <div class="row margin_zero">
                             <div class="col-md-4">
                                 <div class="product_img">
-                                    <img src="{{$product['galleryURL']}}">
+                                    @if($product['pictureurl'])
+                                    <img src="{{$product['pictureurl']}}">
+                                    @else
+                                    <img src="{{url('images/no-image.png')}}">
+                                    @endif
                                 </div>
                             </div>
 
                             <div class="col-md-8 ">
-                                <h1>{{$product['title']}}</h1>
+                                <a href="{{$product['dealurl']}}" target="_blank"><h1>{{$product['title']}}</h1></a>
                                 <div class="row">
-                                    <div class="col-md-10">
-                                    @if(isset($product['viewItemURL']) AND !empty($product['viewItemURL']))
-                                    <i class="fa fa-video-camera"></i>
-                                    @endif
+                                    <div class="col-md-11">
                                     </div>
-                                    <div class="col-md-2">
-                                        <p><span>${{$product['currentPrice']}}</span></p>
+                                    <div class="col-md-1">
+                                        <p><span class="productPrice">${{$product['convertedcurrentprice']}}</span></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-11 socialShareRow">
+                                        <div class="a2a_kit a2a_kit_size_32 a2a_default_style pull-right" data-a2a-url="{{$product['dealurl']}}" data-a2a-title="I Like this!">
+                                            <a class="a2a_button_facebook"></a>
+                                            <a class="a2a_button_twitter"></a>
+                                            <a class="a2a_button_google_plus"></a>
+                                            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+                                        </div>       
+                                    </div>
+                                    <div class="col-md-1 pull-right">
+                                        <a href="javascript:void(0);" class="socialShareIcon"><i class="fa fa-share-alt"></i></a>
                                     </div>
                                 </div>
                                 <!-- <div class="row">

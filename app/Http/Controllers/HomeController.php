@@ -2,6 +2,8 @@
 
 use App\Model\Nobid;
 use Illuminate\Http\Request;
+use Mail;
+use Validator;
 
 class HomeController extends Controller {
 
@@ -311,14 +313,14 @@ class HomeController extends Controller {
 
 	public function getHotDeal()
 	{
+		// abort(503);
 		$hot_deal_url = 'http://topdroidapps.hostei.com/ebayapi/hot_deals.json';
 		$response = Nobid::curlRequestForData($hot_deal_url);
 		$response = json_decode($response, true);
-		// $productsArr = $response['ebaydailydeals'][0]['searchResult'][0]['item'];
-		
+		$productsArr = $response['ebaydailydeals']['items'];
 
-		echo '<pre>';		
-		print_r($response); exit();
+		// echo '<pre>';		
+		// print_r($productsArr); exit();
 
 
 		$products = [];
@@ -326,18 +328,14 @@ class HomeController extends Controller {
 		foreach ($productsArr as $key => $value) {
 			// dd($value);
 			$row = array();
-		    $row['title'] = $value['title'][0];
-		    $row['galleryURL'] = $value['galleryURL'][0];
-		    $row['viewItemURL'] = $value['viewItemURL'][0];
-		    $row['currentPrice'] = $value['sellingStatus'][0]['currentPrice'][0]['__value__'];
+		    $row['title'] = $value['title'];
+		    $row['convertedcurrentprice'] = $value['convertedcurrentprice'];
+		    $row['pictureurl'] = $value['pictureurl'];
+		    $row['dealurl'] = $value['dealurl'];
 		    $products[] = $row;
 		}
 
-		// foreach ($products as $key => $value) {
-		// 	dd($value['title']);
-		// }
-
-		dd($products);
+		// dd($products);
 		return view('hot-deal', ['products' => $products]);
 	}
 
@@ -348,6 +346,31 @@ class HomeController extends Controller {
 	public function getContactUs()
 	{
 		return view('contact-us');
+	}
+
+	/**
+	 * Send Contact us Message Email
+	 */
+
+	public function postContactUs(Request $request)
+	{
+		$v = Validator::make($request->all(), [
+	        'message' => 'required',
+	    ]);
+
+	    if ($v->fails())
+	    {
+	        return redirect()->back()->withErrors($v->errors());
+	    }
+
+		$contact_data = $request->all();
+		$message = $contact_data['message'];
+		Mail::raw($message, function($message) {
+		    $message->from('preciousapps@gmail.com', 'Favorites from Ebay');
+		    $message->to('imransiddiq91@gmail.com')->subject('Favorites from Ebay - Message From Website!');
+		});
+
+		return redirect()->back()->with('alert_message', 'Congaratulation! Your Message has been sent successfully.');
 	}
 
 
